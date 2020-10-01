@@ -7,8 +7,7 @@
     ```
     export AIRFLOW_HOME=./templates  # this is wherever you want to put your dags
     export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
-    export STAGE=staging
-    export=essencetech-prometheus-preprod
+    export STAGE=  # Set Stage
 
     airflow initdb  # Only needs run the first time.
 
@@ -18,8 +17,7 @@
     ```
     export AIRFLOW_HOME=./templates # this is wherever you want to put your dags
     export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
-    export STAGE=staging
-    export=essencetech-prometheus-preprod
+    export STAGE=  # Set Stage
 
     airflow scheduler
     ```
