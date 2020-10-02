@@ -13,7 +13,7 @@
 
     airflow webserver -p 8080
     ```
-4. In anotbher terminal running the virtual env, run:
+4. In another terminal running the virtual env, run:
     ```
     export AIRFLOW_HOME=./templates # this is wherever you want to put your dags
     export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
@@ -28,3 +28,6 @@
 * For running locally, set AIRFLOW_HOME to a new directory and create symbolic links to the Deployment folder.
 * Have a "shared" directory, that contains functions across the dags.
     * Within the shared folder, have a "dag_functions.py" file, that wraps the functions into ones usable by Airflow, and handles things like Airflow context. Import these into Airflow and point the PythonOperator at them. Do not define new functions in dags.
+
+## Creating Branches
+* A Branch must both start and end at a DummyOperator
