@@ -13,3 +13,5 @@
 *Unstage commits* - `git reset --soft HEAD~<number of commits>`
 
 *Push new branch and set upstream* - `git push --set-upstream origin`
+
+*Merge a branch into the current branch* - `git merge <branch_name>`
