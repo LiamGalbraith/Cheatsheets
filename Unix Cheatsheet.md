@@ -14,6 +14,10 @@
 ## Applications
 *Install a program* - `sudo apt-get install <program name>`
 
+## Running programs
+
+*Keep a command running after closing terminal session* - `nohup <command to run>`
+
 
 
 ## Putting it all together in a .sh file
