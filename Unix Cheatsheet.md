@@ -16,7 +16,7 @@
 
 ## Running programs
 
-*Keep a command running after closing terminal session* - `nohup <command to run>`
+*Keep a command running after closing terminal session* - `nohup <command to run> <and any arguments>`
 
 
 
