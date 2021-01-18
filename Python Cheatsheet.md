@@ -26,3 +26,16 @@
 
 `sorted(arr)` - Will sort `arr` in ascending order. Will return a new list.
     * `sorted(iterable, reverse=True|False, key=func)`
+    
+    
+## Global Variables
+
+The `global` keyword allows you to modify the variable outside of the current scope.
+
+```
+counter = 0
+
+def update_counter():
+    global counter
+    counter += 1
+```
