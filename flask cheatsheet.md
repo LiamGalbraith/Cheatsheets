@@ -126,3 +126,5 @@ for a 0-index count, use `loop.index0` e.g.:
     {% endfor %}
 </ul>
 ``` 
+
+For a 1-indexed count, use `loop.index`
