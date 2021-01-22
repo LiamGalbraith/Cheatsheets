@@ -73,7 +73,7 @@ The view function determines the response, and interacts with the model and the 
 3. Return the rendered template
 4. The browser shows the page to the user.
 
-## Page Not Found
+## Error Handling - e.g. Page Not Found
 To return a 404, page not found error, use the `flask.abort()` method, e.g.
 
 ```
@@ -128,3 +128,27 @@ for a 0-index count, use `loop.index0` e.g.:
 ``` 
 
 For a 1-indexed count, use `loop.index`
+
+
+## REST API
+Flask makes it very easy to create a rest api - simply return a json-serializable object, such as a dict. Best practice is to start the URL with "/api/"
+
+Lists cannot be returned as they are, and instead you must use the `jsonify()` method. 
+
+```
+from flask import jsonify, Flask
+
+app = Flask(__name__)
+
+posts = [
+    {
+        "id": "0123",
+        "message": "Web Dev is cool"
+    }
+]
+
+@app.route("/api/all_posts/")
+def api_all_posts():
+    return jsonify(posts)
+
+```
