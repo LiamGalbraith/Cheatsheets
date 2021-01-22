@@ -115,6 +115,7 @@ Jinja for loops expose a variable `loop`. This variable can be used to find out 
 
 for a 0-index count, use `loop.index0` e.g.:
 
+```
 <ul>
     {% for card in cards %}
         <li>
@@ -124,4 +125,4 @@ for a 0-index count, use `loop.index0` e.g.:
         </li>
     {% endfor %}
 </ul>
-   
+``` 
