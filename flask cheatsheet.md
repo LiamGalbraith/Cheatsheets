@@ -118,7 +118,7 @@ for a 0-index count, use `loop.index0` e.g.:
 <ul>
     {% for card in cards %}
         <li>
-            <a href="{{ url_for('card_view', index=**loop.index0**) }}">
+            <a href="{{ url_for('card_view', index=loop.index0) }}">
                 {{ card.question }}
             </a>
         </li>
