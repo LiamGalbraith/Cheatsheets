@@ -93,6 +93,15 @@ def card_view(index):
         abort(404)
 ```
 
+
+## Reverse URL building (url_for)
+Inside a Jinja template, you can use the `url_for` method to return the url for a given view name. The first argument is the name of the view function, and any other arguments are arguments the view function accepts.
+
+```
+{{ url_for('view_function_name', arg1='Hello') }}
+```
+
+
 ## Expressions in Templates
 Expressions are written using {% %}
 
