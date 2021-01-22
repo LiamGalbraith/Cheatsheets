@@ -161,3 +161,33 @@ def api_all_posts():
     return jsonify(posts)
 
 ```
+
+## Handling POST requests
+View functions only handle get requests by default. To accept other types of requests, update the `@app.route` method and perform logic checks using `request.method`
+
+```
+from flask import request
+
+
+@app.route("/add_card", methods=["GET", "POST"])
+def add_card():
+    if request.method == "POST":
+        ...
+```
+
+request is a global object, however inside a view function it represents the current request from the browser.
+
+The attribute `request.form` behaves like a dictionary, and can be accesseed like: `request.form['key']`
+
+You need to return a template after handling a POST request, e.g.:
+
+```
+from flask import request, redirect, url_for
+
+
+@app.route("/add_card", methods=["GET", "POST"])
+def add_card():
+    if request.method == "POST":
+        ....
+        return redirect(url_for('welcome'))
+```
