@@ -72,3 +72,56 @@ The view function determines the response, and interacts with the model and the 
 2. Send that data to the template
 3. Return the rendered template
 4. The browser shows the page to the user.
+
+## Page Not Found
+To return a 404, page not found error, use the `flask.abort()` method, e.g.
+
+```
+from flask import Flask, abort
+
+from model import db
+
+
+app = Flask(__name__)
+
+@app.route("/card/<int:index>")
+def card_view(index):
+    try:
+        card = db[index]
+        return render_template("card.html", card=card)
+    except IndexError:
+        abort(404)
+```
+
+## Expressions in Templates
+Expressions are written using {% %}
+
+If statements require and {% endif %} statement, e.g.:
+
+<button>
+    {% if index < max_index %}
+        <a href="{{ url_for('card_view', index=index + 1) }}">
+            Next Card
+        </a>
+    {% else %}
+        <a href="{{ url_for('card_view', index=0) }}">
+            First Card
+        </a>
+    {% endif %}
+</button>
+
+### For Loops
+Jinja for loops expose a variable `loop`. This variable can be used to find out which iteration you are in for the loop, 
+
+for a 0-index count, use `loop.index0` e.g.:
+
+<ul>
+    {% for card in cards %}
+        <li>
+            <a href="{{ url_for('card_view', index=**loop.index0**) }}">
+                {{ card.question }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+   
