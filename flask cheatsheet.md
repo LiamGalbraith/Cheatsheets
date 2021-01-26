@@ -30,6 +30,15 @@ Jinja templates generate text files
 Templates are text files that contain placeholders for varaibles, using double curly braces {{ }}.
     - Logic can be added, including `if`, `for` loops etc.
     
+### Jinja Template Inheritance
+Jinja can inherit from another template using 'extends' to specify a parent template. Blocks can then be used to fill in parts of the parent with content specific to this page
+
+```
+{% extends "base.html" %}
+
+{% block title %}Page Title!{% endblock %}
+```
+    
 ### A Jinja template example
 <html>
     <head>
