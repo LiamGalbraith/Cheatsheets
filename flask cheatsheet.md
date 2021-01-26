@@ -102,7 +102,7 @@ Inside a Jinja template, you can use the `url_for` method to return the url for 
 {{ url_for('view_function_name', arg1='Hello') }}
 ```
 
-**'static'** is a view tha exists by default for the 'static' folder, and can be used for e.g. stylesheets, pictures...
+**'static'** is a view tha exists by default for the 'static' folder, and can be used for e.g. stylesheets, pictures. Using this means that if at some point the location for the items in the static folder changes, such as to a dedicated server, all the urls don't need to be changed - just the flask configuration for static needs changed.
 
 ```
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css' }}">
