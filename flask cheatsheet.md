@@ -25,6 +25,7 @@ Components that display data to the user. Create a user-friendly presentation.
 
 Jinja templates generate text files
     - We use it to create HTML files
+    - By default, escapes all entries in form submissions if displayed as jinja variables.
     
 Templates are text files that contain placeholders for varaibles, using double curly braces {{ }}.
     - Logic can be added, including `if`, `for` loops etc.
@@ -175,7 +176,7 @@ def add_card():
         ...
 ```
 
-request is a global object, however inside a view function it represents the current request from the browser.
+request is a global object, however inside a view function it represents the current request from the browser - this includes headers, cookies form data etc.
 
 The attribute `request.form` behaves like a dictionary, and can be accesseed like: `request.form['key']`
 
@@ -191,3 +192,6 @@ def add_card():
         ....
         return redirect(url_for('welcome'))
 ```
+
+## Security
+While jinja escape the html characters before displaying them, the user input will be saved in the database as is so it should be cleaned up before being saved. From protection from these kinds of 'attacks', use Flask-WTF
