@@ -102,6 +102,12 @@ Inside a Jinja template, you can use the `url_for` method to return the url for 
 {{ url_for('view_function_name', arg1='Hello') }}
 ```
 
+**'static'** is a view tha exists by default for the 'static' folder, and can be used for e.g. stylesheets, pictures...
+
+```
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css' }}">
+```
+
 
 ## Expressions in Templates
 Expressions are written using {% %}
