@@ -10,6 +10,8 @@
 
 ## Print Formatting
 
+*f strings* - https://medium.com/@NirantK/best-of-python3-6-f-strings-41f9154983e
+
 *Printing decimal places*
 `print("%.6f" % num)` - Will print the variable `num` to 6 decimal places.
 
