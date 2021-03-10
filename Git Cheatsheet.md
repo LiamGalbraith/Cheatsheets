@@ -16,6 +16,7 @@
   * `--mixed` Discards the commits and adds, but leaves the changes in the working directory.
   * `--hard` Discard the commit, add and any changes to the code.
   * If the commit you want to get rid of was the last commit, and you have not done any additional work you can simply use - `git reset HEAD^`
+      * Create a `git uncommit` alias: `git config --global alias.uncommit 'reset HEAD^'`
 
 
 
