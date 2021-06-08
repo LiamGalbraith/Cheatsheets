@@ -23,3 +23,10 @@
 *Push new branch and set upstream* - `git push --set-upstream origin`
 
 *Merge a branch into the current branch* - `git merge <branch_name>`
+
+## Reversing a rebase, using 'reflog', 'tag' and 'reset'
+Hopefully, this shouldn't happen, but if you need to reverse a rebase, there is a simple solution:
+1. Create a backup, just incase: `git tag BACKUP`
+2. Find the head commit of the branch immediately before the rebase: `git reflog`, or `git log -g`
+3. Reset the branch. Suppose the old commit was `HEAD@{3}` in the ref log: `git reset --hard HEAD@{3}` (For Windows, this needs to be `git reset --hard "HEAD@{3}"`
+4. If there's an issue, reset to the backup: `git reset --hard BACKUP`
