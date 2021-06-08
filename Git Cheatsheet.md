@@ -24,7 +24,9 @@
 
 *Merge a branch into the current branch* - `git merge <branch_name>`
 
-## Reversing a rebase, using 'reflog', 'tag' and 'reset'
+## Scenarios
+
+### Safely reversing a rebase using 'reflog', 'tag', and 'reset'
 Hopefully, this shouldn't happen, but if you need to reverse a rebase, there is a simple solution:
 1. Create a backup, just incase: `git tag BACKUP`
 2. Find the head commit of the branch immediately before the rebase: `git reflog`, or `git log -g`
