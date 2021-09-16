@@ -33,3 +33,12 @@
 sudo apt-get update
 sudo apt-get install -y -qq -fix-missing install <package 1> <package 2> <package 3> ... <package n>
 ```
+
+
+## Working with SFTP
+### Connecting
+`sftp <username>@<domain>` - This will then ask for your password. Domain can be a web domain, such as `@example.com`, or an IP address like `x.xxx.xxx.xxx`.
+
+### SFTP commands
+`get <remote_path> <local_path>` - This will retrieve a file from <remote_path> on the remote machine, and save it to <local_path> on the local machine.
+`put <local_path> <remote_path>` - This will put a file from <local_path> on the local machine to <remote_path> on the remote machine.
