@@ -1,3 +1,142 @@
+# How Tensorflow works
+## Graphs and Sessions
+Tensorflow creates a graph of defined computations - this is like writing down an equation without performing any math e.g. `varaible z = variable x + varaible y`, without knowing the actualy value of x, y, or z. Different computations are linked together, so a certain computation may need to be completed before another can be run, so these are linked together in the graph.
+
+Sessions are way to execute part of, or the entire, graph.
+
+## Tensors
+Tensors are vectors generalised to higher dimensions. Tensorflow represents tensors as n-dimensiona arrays of base datatypes.
+
+Each tensor has a data type (float32, int32, string etc.) and a shape (the dimensions).
+
+### Defining a tensor
+#### Scalar
+Scalars are simple tensors, with shape 1 (1 value). You can create a scalar variable with `tf.Variable`:
+```
+string_var = tf.Variable("This is a string", tf.string)
+int_var = tf.Variable(27, tf.int16)
+float_var = tf.Variable(2.7, tf.float64)
+```
+
+#### Rank
+The rank of a tensor is the deepest level of a nested list. You can determine the rank using `tf.rank(tensor)`
+
+
+Scalars are rank 0 tensors, this is because they are a single, defined value with no dimensionality - it has no axes.
+```
+scalar_value = tf.Variable(4, tf.int32)
+tf.rank(scalar_value)
+>> <tf.Tensor: shape=(), dtype=int32, numpy=0>
+```
+
+If you add an axis, this becomes a rank-1 tensor:
+```
+rank1_tensor = tf.Variable([4, 5, 6], tf.int32)
+tf.rank(rank1_tensor)
+>> <tf.Tensor: shape=(), dtype=int32, numpy=1>
+```
+
+By adding a second axis, this becomes a rank-2 tensor:
+```
+rank2_tensor = tf.Variable([[4, 5], [5, 6]], tf.int32)
+tf.rank(rank2_tensor)
+>> <tf.Tensor: shape=(), dtype=int32, numpy=2>
+```
+
+#### Shape
+Shape is the number of elements that exist in each dimension. You can view this using `tensor.shape`
+
+```
+scalar_value = tf.Variable(4, tf.int32)
+scalar_value.shape
+>> TensorShape([
+
+rank1_tensor = tf.Variable([4, 5, 6], tf.int32)
+rank1_tensor.shape
+>> TensorShape([3])
+
+rank2_tensor = tf.Variable([[4, 5], [5, 6]], tf.int32)
+rank2_tensor.shape
+>> TensorShape([2, 2])
+
+
+rank2_tensor = tf.Variable([[4, 5], [5, 6], [6, 7]], tf.int32)
+rank2_tensor.shape
+>> TensorShape([3, 2])
+
+
+rank2_tensor = tf.Variable([[4, 5, 6], [5, 6, 7], [6, 7, 8]], tf.int32)
+rank2_tensor.shape
+>> TensorShape([3, 3])
+```
+
+#### Changing Shape
+```
+tensor1 = tf.ones([1, 2, 3])  # Creates a Tensor of ones, with shape [1, 2, 3]
+>> tf.Tensor(
+    [
+        [
+            [1. 1. 1.]
+            [1. 1. 1.]
+        ]
+    ],
+    shape=(1, 2, 3),
+    dtype=float32
+)
+
+tensor2 = tf.reshape(tensor1, [2, 3, 1])
+>> tf.Tensor(
+    [
+        [
+            [1.]
+            [1.]
+            [1.]
+        ]
+        [
+            [1.]
+            [1.]
+            [1.]
+        ]
+    ],
+    shape=(2, 3, 1),
+    dtype=float32
+)
+
+tensor3 = tf.reshape(tensor2, [3, -1])  # -1 infers the number, by figuring out how many elements are left. In this case, 2, as 6 elements and 3 * 2 = 6
+>> tf.Tensor(
+    [
+        [1. 1.]
+        [1. 1.]
+        [1. 1.]
+    ],
+    shape=(3, 2),
+    dtype=float32
+)
+
+tf.reshape(tensor2, [6])
+>> tf.Tensor(
+    [1. 1. 1. 1. 1. 1.],
+    shape=(6),
+    dtype=float32
+)
+```
+
+#### Types
+* Constant
+* Variable
+* Placeholder
+* SpareTensor
+
+With the exception of `Variable`, these are all immutable.
+
+#### Evaluation
+To evaluate a tensor, we must create a session:
+```
+with tf.Session() as sess:
+    tensor.eval()
+```
+Now, we can use that tensor in future calculations.
+
 # Keras
 
 *Load built-in datasets*
