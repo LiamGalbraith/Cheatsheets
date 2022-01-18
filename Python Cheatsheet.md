@@ -41,3 +41,16 @@ def update_counter():
     global counter
     counter += 1
 ```
+
+## Private Methods
+Private methods (that start with `__`) defined in a file will not be imported with `*`. If you have a file called `functions.py` containing:
+```
+def hello_world():
+    print("Hello World!")
+    
+
+def __foo_bar():
+    print("foo bar")
+```
+
+Running `from functions import *` will only import the `hello_world` method.
