@@ -1,0 +1,3 @@
+# Str Methods
+### Split a column into multiple
+df[['NewCol1', 'NewCol2']] = df['ColToSplit'].str.split(' ', 1, expand=True)
